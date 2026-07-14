@@ -50,6 +50,6 @@ RUN apk add --no-cache vips
 
 COPY --from=build /opt/app ./
 
-EXPOSE 1337
+EXPOSE 1338
 
 CMD ["npm", "run", "start"]
