@@ -1,0 +1,22 @@
+{
+  "collectionName": "contenido_preguntas_frecuentes",
+  "info": {
+    "displayName": "Preguntas Frecuentes",
+    "description": "Sección de FAQ con título general y lista de preguntas"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": false
+    },
+    "Preguntas": {
+      "type": "component",
+      "component": "contenido.pregunta",
+      "repeatable": true
+    }
+  }
+}

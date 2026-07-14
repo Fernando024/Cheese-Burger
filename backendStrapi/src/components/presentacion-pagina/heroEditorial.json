@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_secciones_hero_asimetricos",
+  "info": {
+    "displayName": "Estilo Editorial",
+    "icon": "layout",
+    "description": "Hero premium con rejilla rota, texto flotante e imagen de gran escala descentrada."
+  },
+  "attributes": {
+    "tituloPrincipal": {
+      "type": "string",
+      "default": "Titulo principal de ejemplo",
+      "required": false
+    },
+    "conceptoClave": {
+      "type": "string",
+      "default": "Mejorando dia a dia "
+    },
+    "parrafoDescriptivo": {
+      "type": "text",
+      "default": "este es un ejemplo para describir nuestro negocio"
+    },
+    "imagenProtagonista": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "videos",
+        "audios"
+      ]
+    },
+    "boton": {
+      "type": "component",
+      "component": "independientes.boton",
+      "repeatable": false
+    }
+  }
+}
