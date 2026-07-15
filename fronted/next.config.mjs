@@ -22,6 +22,7 @@ function parseStrapiUrl(rawUrl) {
 const strapiHost = parseStrapiUrl(STRAPI_URL);
 
 const nextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       {
