@@ -1,0 +1,86 @@
+.hero {
+  padding: 0.5rem 1.25rem 4rem;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.concepto {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-yellow-dark);
+  background: var(--clr-yellow-pale);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.titulo {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.parrafo {
+  font-size: 1.2rem;
+  color: var(--clr-grey-500);
+  max-width: 50ch;
+  line-height: 1.7;
+}
+
+.btnWrap {
+  margin-top: 0.5rem;
+}
+
+.mediaCol {
+  display: flex;
+  justify-content: center;
+}
+
+.media {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .textCol {
+    order: 0;
+  }
+
+  .mediaCol {
+    order: 1;
+  }
+
+  .hero {
+    padding: 0.5rem 1.25rem 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 0.25rem 1.25rem 2.5rem;
+  }
+}

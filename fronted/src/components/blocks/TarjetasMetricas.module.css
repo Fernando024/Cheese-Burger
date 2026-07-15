@@ -1,0 +1,49 @@
+.section {
+  padding: 4rem 1.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.num {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--clr-yellow-dark);
+  margin-bottom: 0.5rem;
+}
+
+.desc {
+  font-size: 1rem;
+  color: var(--clr-grey-500);
+  max-width: 30ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}

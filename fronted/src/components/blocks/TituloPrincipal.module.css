@@ -1,0 +1,29 @@
+.section {
+  padding: 4rem 1.25rem 2rem;
+}
+
+.inner {
+  text-align: center;
+}
+
+.titulo {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.desc {
+  font-size: 1.1rem;
+  color: var(--clr-grey-500);
+  max-width: 60ch;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2.5rem 1.25rem 1.5rem;
+  }
+}
