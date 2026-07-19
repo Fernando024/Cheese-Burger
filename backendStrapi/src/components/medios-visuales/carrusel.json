@@ -7,11 +7,11 @@
   },
   "options": {},
   "attributes": {
-    "Titulo": {
+    "titulo": {
       "type": "string",
       "default": "Titulo de ejemplo"
     },
-    "Cartas": {
+    "cartas": {
       "type": "component",
       "component": "medios-visuales.slide",
       "repeatable": true,
