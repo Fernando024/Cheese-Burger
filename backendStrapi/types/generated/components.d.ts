@@ -300,7 +300,7 @@ export interface MediosVisualesCarrusel extends Struct.ComponentSchema {
     autoReproductor: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
     boton: Schema.Attribute.Component<'independientes.boton', false>;
-    Cartas: Schema.Attribute.Component<'medios-visuales.slide', true> &
+    cartas: Schema.Attribute.Component<'medios-visuales.slide', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
@@ -309,7 +309,7 @@ export interface MediosVisualesCarrusel extends Struct.ComponentSchema {
         },
         number
       >;
-    Titulo: Schema.Attribute.String &
+    titulo: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Titulo de ejemplo'>;
     velocidad: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
