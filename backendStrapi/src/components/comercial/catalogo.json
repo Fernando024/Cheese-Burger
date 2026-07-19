@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_comercial_catalogo",
+  "info": {
+    "displayName": "Catálogo",
+    "icon": "bookOpen",
+    "description": "Bloque que muestra un título, descripción y una lista de productos con imagen, descripción y precio"
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Titulo de ejemplo (Producto)",
+      "required": false
+    },
+    "descripcion": {
+      "type": "text",
+      "default": "Explora nuestra selección de productos",
+      "required": false
+    },
+    "items": {
+      "type": "component",
+      "component": "comercial.item-catalogo",
+      "repeatable": true,
+      "required": false
+    }
+  }
+}

@@ -1,6 +1,6 @@
 const STRAPI_URL = (process.env.NEXT_PUBLIC_STRAPI_URL || "").replace(/\/$/, "");
 
-const FORMAT_FALLBACK_ORDER = ["large", "medium", "small", "thumbnail"];
+const FORMAT_FALLBACK_ORDER = ["large", "medium", "small"];
 
 function pickBestFormatUrl(media) {
   if (!media) return null;

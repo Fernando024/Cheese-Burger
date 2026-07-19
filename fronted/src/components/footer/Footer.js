@@ -94,39 +94,39 @@ export default function Footer({ data }) {
 
   return (
     <div className={styles.footerInner}>
-      {(logo || nombre) && (
-        <div className={styles.brand}>
-          <Link href="/" className={styles.logoWrapper}>
-            {logo && (
-              <StrapiImage media={logo} width={100} height={60} className={styles.logo} alt={nombre} />
-            )}
-            {nombre && <span className={styles.logoText}>{nombre}</span>}
-          </Link>
-        </div>
-      )}
-
-      {columnItems.length > 0 && (
-        <div className={styles.columns}>
-          {columnItems.map((item) => renderBloque(item))}
-        </div>
-      )}
-
-      {socialItems.length > 0 && (
-        <div className={styles.socialSection}>
-          <p className={styles.socialTitle}>Síguenos en todas nuestras redes</p>
-          <div className={styles.socialRow}>
-            {socialItems.map((item, i) => (
-              <span key={item.id ?? i}>{renderSocial(item)}</span>
-            ))}
+        {(logo || nombre) && (
+          <div className={styles.brand}>
+            <Link href="/" className={styles.logoWrapper}>
+              {logo && (
+                <StrapiImage media={logo} width={100} height={60} className={styles.logo} alt={nombre} />
+              )}
+              {nombre && <span className={styles.logoText}>{nombre}</span>}
+            </Link>
           </div>
-        </div>
-      )}
+        )}
 
-      <div className={styles.bottom}>
-        <p className={styles.copy}>
-          &copy; {new Date().getFullYear()} {nombre}. Todos los derechos reservados.
-        </p>
-      </div>
+        {columnItems.length > 0 && (
+          <div className={styles.columns}>
+            {columnItems.map((item) => renderBloque(item))}
+          </div>
+        )}
+
+        {socialItems.length > 0 && (
+          <div className={styles.socialSection}>
+            <p className={styles.socialTitle}>Síguenos en todas nuestras redes</p>
+            <div className={styles.socialRow}>
+              {socialItems.map((item, i) => (
+                <span key={item.id ?? i}>{renderSocial(item)}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className={styles.bottom}>
+          <p className={styles.copy}>
+            &copy; {new Date().getFullYear()} {nombre}. Todos los derechos reservados.
+          </p>
+        </div>
     </div>
   );
 }

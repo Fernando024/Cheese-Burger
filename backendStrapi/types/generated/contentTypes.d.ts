@@ -561,12 +561,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'contenido.tarjetas',
         'contenido.tarjeta-individual',
         'servicios-externos.correo',
-        'precios.tarjetas-precios',
         'contenido.titulo-principal',
         'contenido.preguntas-frecuentes',
         'independientes.link',
         'independientes.boton',
         'contenido.tarjetascontenido',
+        'comercial.planes-precios',
+        'comercial.catalogo',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

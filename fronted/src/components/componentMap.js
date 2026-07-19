@@ -12,6 +12,7 @@ import Mapa from "./blocks/Mapa";
 import TarjetasPrecios from "./blocks/TarjetasPrecios";
 import PreguntasFrecuentes from "./blocks/PreguntasFrecuentes";
 import FormularioContacto from "./blocks/FormularioContacto";
+import Catalogo from "./blocks/Catalogo";
 
 const componentMap = {
   "presentacion-pagina.seccion-principal": SeccionPrincipal,
@@ -25,12 +26,13 @@ const componentMap = {
   "medios-visuales.galeria": Galeria,
   "servicios-externos.youtube": Youtube,
   "servicios-externos.mapa": Mapa,
-  "precios.tarjetas-precios": TarjetasPrecios,
+  "comercial.planes-precios": TarjetasPrecios,
   "contenido.preguntas-frecuentes": PreguntasFrecuentes,
   "servicios-externos.correo": FormularioContacto,
   "contenido.tarjeta-individual": null,
   "independientes.link": null,
   "independientes.boton": null,
+  "comercial.catalogo": Catalogo,
 };
 
 export default componentMap;

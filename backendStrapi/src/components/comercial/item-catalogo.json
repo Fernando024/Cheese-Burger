@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_comercial_item-catalogo",
+  "info": {
+    "displayName": "Item Producto",
+    "icon": "cube",
+    "description": "Producto individual dentro del catálogo"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Titulo de ejemplo"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "descripcion": {
+      "type": "text",
+      "default": "Descripción del producto",
+      "required": false
+    },
+    "precio": {
+      "type": "decimal",
+      "required": false,
+      "default": 19.99,
+      "min": 0
+    }
+  }
+}

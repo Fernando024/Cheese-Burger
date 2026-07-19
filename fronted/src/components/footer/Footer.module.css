@@ -32,7 +32,7 @@
   font-family: var(--font-secondary);
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--clr-yellow-dark);
+  color: #000;
 }
 
 .columns {
@@ -135,10 +135,6 @@
 }
 
 @media (max-width: 480px) {
-  .site-footer {
-    padding: 2.5rem 1rem;
-  }
-
   .columns {
     grid-template-columns: 1fr;
     gap: 1.5rem;

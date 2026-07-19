@@ -142,12 +142,13 @@ const PAGE_POPULATE = {
   "populate[bloques][on][medios-visuales.galeria][populate]": "*",
   "populate[bloques][on][servicios-externos.youtube][populate]": "*",
   "populate[bloques][on][servicios-externos.mapa][populate]": "*",
-  "populate[bloques][on][precios.tarjetas-precios][populate]": "*",
+  "populate[bloques][on][comercial.planes-precios][populate]": "*",
   "populate[bloques][on][contenido.preguntas-frecuentes][populate]": "*",
   "populate[bloques][on][servicios-externos.correo][populate]": "*",
   "populate[bloques][on][contenido.tarjeta-individual][populate]": "*",
   "populate[bloques][on][independientes.link][populate]": "*",
   "populate[bloques][on][independientes.boton][populate]": "*",
+  "populate[bloques][on][comercial.catalogo][populate][items][populate]": "*",
 };
 
 export async function getPageBySlug(slug) {

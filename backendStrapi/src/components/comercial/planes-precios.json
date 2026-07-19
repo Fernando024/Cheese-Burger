@@ -1,21 +1,21 @@
 {
-  "collectionName": "components_precio_tarjetas",
+  "collectionName": "components_comercial_planes-precios",
   "info": {
-    "displayName": "Tarjeta de Precio",
+    "displayName": "Planes y precio",
     "description": "Tarjeta con un precio único y fijo"
   },
   "attributes": {
     "titulo": {
       "type": "string",
-      "required": false,
+      "default": "Título de ejemplo",
       "maxLength": 80,
-      "default": "Título de ejemplo"
+      "required": false
     },
     "subtitulo": {
       "type": "string",
-      "required": false,
+      "default": "Subtítulo de ejemplo",
       "maxLength": 120,
-      "default": "Subtítulo de ejemplo"
+      "required": false
     },
     "descripcion": {
       "type": "richtext",
@@ -25,43 +25,45 @@
     "precio": {
       "type": "decimal",
       "required": false,
-      "default": 0.00
+      "default": 0
     },
     "moneda": {
       "type": "string",
       "default": "MXN",
-      "required": false,
-      "maxLength": 10
+      "maxLength": 10,
+      "required": false
     },
     "nota_precio": {
       "type": "string",
-      "required": false,
+      "default": "Nota sobre el precio (ej. IVA incluido)",
       "maxLength": 60,
-      "default": "Nota sobre el precio (ej. IVA incluido)"
+      "required": false
     },
     "insignia": {
       "type": "string",
-      "required": false,
+      "default": "Oferta",
       "maxLength": 50,
-      "default": "Oferta"
+      "required": false
     },
     "logo": {
       "type": "media",
-      "allowedTypes": ["images"],
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "caracteristicas": {
       "type": "component",
+      "component": "comercial.caracteristica",
       "repeatable": true,
-      "component": "precios.caracteristica",
       "required": false,
       "min": 1,
       "max": 15
     },
     "boton": {
       "type": "component",
-      "repeatable": false,
-      "component": "independientes.boton"
+      "component": "independientes.boton",
+      "repeatable": false
     }
   }
 }

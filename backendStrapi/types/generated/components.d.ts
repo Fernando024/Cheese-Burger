@@ -13,6 +13,112 @@ export interface BloquesPiePaginaColumnafooter extends Struct.ComponentSchema {
   };
 }
 
+export interface ComercialCaracteristica extends Struct.ComponentSchema {
+  collectionName: 'components_componentes_caracteristica';
+  info: {
+    displayName: 'Caracter\u00EDstica';
+  };
+  attributes: {
+    texto: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }> &
+      Schema.Attribute.DefaultTo<'Ventaja del plan'>;
+  };
+}
+
+export interface ComercialCatalogo extends Struct.ComponentSchema {
+  collectionName: 'components_comercial_catalogo';
+  info: {
+    description: 'Bloque que muestra un t\u00EDtulo, descripci\u00F3n y una lista de productos con imagen, descripci\u00F3n y precio';
+    displayName: 'Cat\u00E1logo';
+    icon: 'bookOpen';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Explora nuestra selecci\u00F3n de productos'>;
+    items: Schema.Attribute.Component<'comercial.item-catalogo', true>;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Titulo de ejemplo (Producto)'>;
+  };
+}
+
+export interface ComercialItemCatalogo extends Struct.ComponentSchema {
+  collectionName: 'components_comercial_item-catalogo';
+  info: {
+    description: 'Producto individual dentro del cat\u00E1logo';
+    displayName: 'Item Producto';
+    icon: 'cube';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Descripci\u00F3n del producto'>;
+    imagen: Schema.Attribute.Media<'images', true>;
+    precio: Schema.Attribute.Decimal &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<19.99>;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Titulo de ejemplo'>;
+  };
+}
+
+export interface ComercialPlanesPrecios extends Struct.ComponentSchema {
+  collectionName: 'components_comercial_planes-precios';
+  info: {
+    description: 'Tarjeta con un precio \u00FAnico y fijo';
+    displayName: 'Planes y precio';
+  };
+  attributes: {
+    boton: Schema.Attribute.Component<'independientes.boton', false>;
+    caracteristicas: Schema.Attribute.Component<
+      'comercial.caracteristica',
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 15;
+          min: 1;
+        },
+        number
+      >;
+    descripcion: Schema.Attribute.RichText &
+      Schema.Attribute.DefaultTo<'Esta es una descripci\u00F3n de ejemplo para la tarjeta de precio.'>;
+    insignia: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }> &
+      Schema.Attribute.DefaultTo<'Oferta'>;
+    logo: Schema.Attribute.Media<'images'>;
+    moneda: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 10;
+      }> &
+      Schema.Attribute.DefaultTo<'MXN'>;
+    nota_precio: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }> &
+      Schema.Attribute.DefaultTo<'Nota sobre el precio (ej. IVA incluido)'>;
+    precio: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
+    subtitulo: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }> &
+      Schema.Attribute.DefaultTo<'Subt\u00EDtulo de ejemplo'>;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }> &
+      Schema.Attribute.DefaultTo<'T\u00EDtulo de ejemplo'>;
+  };
+}
+
 export interface ContenidoCuerpo extends Struct.ComponentSchema {
   collectionName: 'components_bloque_inicio_cuerpos';
   info: {
@@ -289,72 +395,6 @@ export interface MediosVisualesSlide extends Struct.ComponentSchema {
   };
 }
 
-export interface PreciosCaracteristica extends Struct.ComponentSchema {
-  collectionName: 'components_componentes_caracteristica';
-  info: {
-    displayName: 'Caracter\u00EDstica';
-  };
-  attributes: {
-    texto: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 150;
-      }> &
-      Schema.Attribute.DefaultTo<'Ventaja del plan'>;
-  };
-}
-
-export interface PreciosTarjetasPrecios extends Struct.ComponentSchema {
-  collectionName: 'components_precio_tarjetas';
-  info: {
-    description: 'Tarjeta con un precio \u00FAnico y fijo';
-    displayName: 'Tarjeta de Precio';
-  };
-  attributes: {
-    boton: Schema.Attribute.Component<'independientes.boton', false>;
-    caracteristicas: Schema.Attribute.Component<
-      'precios.caracteristica',
-      true
-    > &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 15;
-          min: 1;
-        },
-        number
-      >;
-    descripcion: Schema.Attribute.RichText &
-      Schema.Attribute.DefaultTo<'Esta es una descripci\u00F3n de ejemplo para la tarjeta de precio.'>;
-    insignia: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 50;
-      }> &
-      Schema.Attribute.DefaultTo<'Oferta'>;
-    logo: Schema.Attribute.Media<'images'>;
-    moneda: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 10;
-      }> &
-      Schema.Attribute.DefaultTo<'MXN'>;
-    nota_precio: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }> &
-      Schema.Attribute.DefaultTo<'Nota sobre el precio (ej. IVA incluido)'>;
-    precio: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
-    subtitulo: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 120;
-      }> &
-      Schema.Attribute.DefaultTo<'Subt\u00EDtulo de ejemplo'>;
-    titulo: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 80;
-      }> &
-      Schema.Attribute.DefaultTo<'T\u00EDtulo de ejemplo'>;
-  };
-}
-
 export interface PresentacionPaginaHeroeditorial
   extends Struct.ComponentSchema {
   collectionName: 'components_secciones_hero_asimetricos';
@@ -485,6 +525,10 @@ declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'bloques-pie-pagina.columnafooter': BloquesPiePaginaColumnafooter;
+      'comercial.caracteristica': ComercialCaracteristica;
+      'comercial.catalogo': ComercialCatalogo;
+      'comercial.item-catalogo': ComercialItemCatalogo;
+      'comercial.planes-precios': ComercialPlanesPrecios;
       'contenido.cuerpo': ContenidoCuerpo;
       'contenido.pregunta': ContenidoPregunta;
       'contenido.preguntas-frecuentes': ContenidoPreguntasFrecuentes;
@@ -499,8 +543,6 @@ declare module '@strapi/strapi' {
       'medios-visuales.galeria': MediosVisualesGaleria;
       'medios-visuales.imagen-galeria': MediosVisualesImagenGaleria;
       'medios-visuales.slide': MediosVisualesSlide;
-      'precios.caracteristica': PreciosCaracteristica;
-      'precios.tarjetas-precios': PreciosTarjetasPrecios;
       'presentacion-pagina.heroeditorial': PresentacionPaginaHeroeditorial;
       'presentacion-pagina.seccion-principal': PresentacionPaginaSeccionPrincipal;
       'servicios-externos.correo': ServiciosExternosCorreo;
