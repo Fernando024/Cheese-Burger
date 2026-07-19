@@ -13,6 +13,7 @@ import TarjetasPrecios from "./blocks/TarjetasPrecios";
 import PreguntasFrecuentes from "./blocks/PreguntasFrecuentes";
 import FormularioContacto from "./blocks/FormularioContacto";
 import Catalogo from "./blocks/Catalogo";
+import Promociones from "./blocks/Promociones";
 
 const componentMap = {
   "presentacion-pagina.seccion-principal": SeccionPrincipal,
@@ -33,6 +34,7 @@ const componentMap = {
   "independientes.link": null,
   "independientes.boton": null,
   "comercial.catalogo": Catalogo,
+  "comercial.promociones": Promociones,
 };
 
 export default componentMap;

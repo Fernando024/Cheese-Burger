@@ -568,6 +568,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'contenido.tarjetascontenido',
         'comercial.planes-precios',
         'comercial.catalogo',
+        'comercial.promociones',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

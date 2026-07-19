@@ -38,7 +38,8 @@
         "independientes.boton",
         "contenido.tarjetascontenido",
         "comercial.planes-precios",
-        "comercial.catalogo"
+        "comercial.catalogo",
+        "comercial.promociones"
       ]
     }
   }

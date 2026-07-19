@@ -1,0 +1,71 @@
+{
+  "collectionName": "components_comercial_promociones_item",
+  "info": {
+    "displayName": "Promociones item",
+    "icon": "percent",
+    "description": "Producto en promoción con precio original, oferta y descuento"
+  },
+  "attributes": {
+    "imagen": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "required": false
+    },
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "default": "Nombre del producto"
+    },
+    "descripcion": {
+      "type": "text",
+      "required": false,
+      "default": "Breve descripción del producto"
+    },
+    "precio_original": {
+      "type": "decimal",
+      "required": true,
+      "default": 0.00,
+      "min": 0
+    },
+    "precio_oferta": {
+      "type": "decimal",
+      "required": true,
+      "default": 0.00,
+      "min": 0
+    },
+    "porcentaje_descuento": {
+      "type": "integer",
+      "required": false,
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    "fecha_inicio": {
+      "type": "datetime",
+      "required": false,
+      "default": null
+    },
+    "fecha_fin": {
+      "type": "datetime",
+      "required": false,
+      "default": null
+    },
+   "dias_semana": {
+      "type": "json",
+      "customField": "plugin::multiselect-checkbox.multiselect-checkbox",
+      "options": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+      "required": false
+    },
+    "tipo_promocion": {
+      "type": "enumeration",
+      "enum": ["porcentaje", "monto_fijo", "2x1", "envio_gratis"],
+      "default": "porcentaje",
+      "required": false
+    },
+    "boton": {
+      "type": "string",
+      "default": "Ver ofertas",
+      "required": false
+    },
+  }
+}

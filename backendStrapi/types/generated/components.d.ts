@@ -119,6 +119,108 @@ export interface ComercialPlanesPrecios extends Struct.ComponentSchema {
   };
 }
 
+export interface ComercialPromociones extends Struct.ComponentSchema {
+  collectionName: 'components_comercial_promociones';
+  info: {
+    description: 'Bloque que muestra un t\u00EDtulo, descripci\u00F3n y una lista de productos en oferta con vigencia y tipo de promoci\u00F3n';
+    displayName: 'Promociones';
+    icon: 'gift';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Aprovecha nuestros descuentos por tiempo limitado'>;
+    dias_semana: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multiselect-checkbox.multiselect-checkbox',
+        [
+          'Lunes',
+          'Martes',
+          'Mi\u00E9rcoles',
+          'Jueves',
+          'Viernes',
+          'S\u00E1bado',
+          'Domingo',
+        ]
+      >;
+    fecha_fin: Schema.Attribute.DateTime;
+    fecha_inicio: Schema.Attribute.DateTime;
+    items: Schema.Attribute.Component<'comercial.promociones-item', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 20;
+          min: 1;
+        },
+        number
+      >;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Ofertas especiales'>;
+  };
+}
+
+export interface ComercialPromocionesItem extends Struct.ComponentSchema {
+  collectionName: 'components_comercial_promociones_item';
+  info: {
+    description: 'Producto en promoci\u00F3n con precio original, oferta y descuento';
+    displayName: 'Promociones item';
+    icon: 'percent';
+  };
+  attributes: {
+    boton: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Ver ofertas'>;
+    descripcion: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Breve descripci\u00F3n del producto'>;
+    dias_semana: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multiselect-checkbox.multiselect-checkbox',
+        [
+          'Lunes',
+          'Martes',
+          'Mi\u00E9rcoles',
+          'Jueves',
+          'Viernes',
+          'S\u00E1bado',
+          'Domingo',
+        ]
+      >;
+    fecha_fin: Schema.Attribute.DateTime;
+    fecha_inicio: Schema.Attribute.DateTime;
+    imagen: Schema.Attribute.Media<'images'>;
+    porcentaje_descuento: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    precio_oferta: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    precio_original: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    tipo_promocion: Schema.Attribute.Enumeration<
+      ['porcentaje', 'monto_fijo', '2x1', 'envio_gratis']
+    > &
+      Schema.Attribute.DefaultTo<'porcentaje'>;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Nombre del producto'>;
+  };
+}
+
 export interface ContenidoCuerpo extends Struct.ComponentSchema {
   collectionName: 'components_bloque_inicio_cuerpos';
   info: {
@@ -529,6 +631,8 @@ declare module '@strapi/strapi' {
       'comercial.catalogo': ComercialCatalogo;
       'comercial.item-catalogo': ComercialItemCatalogo;
       'comercial.planes-precios': ComercialPlanesPrecios;
+      'comercial.promociones': ComercialPromociones;
+      'comercial.promociones-item': ComercialPromocionesItem;
       'contenido.cuerpo': ContenidoCuerpo;
       'contenido.pregunta': ContenidoPregunta;
       'contenido.preguntas-frecuentes': ContenidoPreguntasFrecuentes;

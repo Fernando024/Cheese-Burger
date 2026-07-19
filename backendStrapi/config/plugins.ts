@@ -23,6 +23,9 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
       },
     },
   },
+  'multiselect-checkbox': {
+    enabled: true,
+  },
 });
 
 export default config;

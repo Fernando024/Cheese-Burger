@@ -149,6 +149,7 @@ const PAGE_POPULATE = {
   "populate[bloques][on][independientes.link][populate]": "*",
   "populate[bloques][on][independientes.boton][populate]": "*",
   "populate[bloques][on][comercial.catalogo][populate][items][populate]": "*",
+  "populate[bloques][on][comercial.promociones][populate][items][populate]": "*",
 };
 
 export async function getPageBySlug(slug) {

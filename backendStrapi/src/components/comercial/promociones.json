@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_comercial_promociones",
+  "info": {
+    "displayName": "Promociones",
+    "icon": "gift",
+    "description": "Bloque que muestra un título, descripción y una lista de productos en oferta con vigencia y tipo de promoción"
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Ofertas especiales",
+      "required": false
+    },
+    "descripcion": {
+      "type": "text",
+      "default": "Aprovecha nuestros descuentos por tiempo limitado",
+      "required": false
+    },
+    "items": {
+      "type": "component",
+      "component": "comercial.promociones-item",
+      "repeatable": true,
+      "required": false,
+      "min": 1,
+      "max": 20
+    },
+    "fecha_inicio": {
+      "type": "datetime",
+      "required": false,
+      "default": null,
+      "description": "Fecha desde la que empieza la promoción (opcional)"
+    },
+    "fecha_fin": {
+      "type": "datetime",
+      "required": false,
+      "default": null,
+      "description": "Fecha hasta la que termina la promoción (opcional)"
+    },
+    "dias_semana": {
+      "type": "json",
+      "customField": "plugin::multiselect-checkbox.multiselect-checkbox",
+      "options": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+      "required": false
+    }
+  }
+}
