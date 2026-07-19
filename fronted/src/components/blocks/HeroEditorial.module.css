@@ -79,8 +79,11 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 412px) {
   .hero {
     padding: 0.25rem 1.25rem 2.5rem;
+  }
+  .concepto{
+    margin-top: 4rem;
   }
 }
