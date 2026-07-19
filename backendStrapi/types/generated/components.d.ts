@@ -331,7 +331,7 @@ export interface MediosVisualesGaleria extends Struct.ComponentSchema {
     icon: 'grid';
   };
   attributes: {
-    Cartas: Schema.Attribute.Component<'medios-visuales.imagen-galeria', true> &
+    cartas: Schema.Attribute.Component<'medios-visuales.imagen-galeria', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
@@ -340,16 +340,16 @@ export interface MediosVisualesGaleria extends Struct.ComponentSchema {
         },
         number
       >;
-    Columnas: Schema.Attribute.Enumeration<['2', '3', '4']> &
+    columnas: Schema.Attribute.Enumeration<['2', '3', '4']> &
       Schema.Attribute.DefaultTo<'3'>;
-    Descripcion: Schema.Attribute.Text &
+    descripcion: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 500;
       }> &
       Schema.Attribute.DefaultTo<'Descripcion de galeria de ejemplo'>;
-    Efecto: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    MostrarTitulos: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    Titulo: Schema.Attribute.String &
+    efecto: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    mostrarTitulos: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    titulo: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Este es un titulo de ejemplo'>;
   };
 }
