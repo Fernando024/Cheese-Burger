@@ -101,13 +101,18 @@ export default function Catalogo({ block }) {
               aria-modal="true"
               aria-label="Detalle del producto"
             >
+              <div className={styles.modalAccent} />
+
               <button
                 className={styles.closeBtn}
                 onClick={closeModal}
                 type="button"
                 aria-label="Cerrar"
               >
-                ✕
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
 
               <div className={styles.modalBody}>
@@ -120,15 +125,14 @@ export default function Catalogo({ block }) {
                       className={styles.modalImg}
                     />
                   )}
+                  <div className={styles.modalPriceBadge}>
+                    {formatPrice(selected.precio)}
+                  </div>
                 </div>
 
                 <div className={styles.modalInfo}>
-                  <span className={styles.modalPrice}>
-                    {formatPrice(selected.precio)}
-                  </span>
-                  {selected.titulo && (
-                    <h3 className={styles.modalTitle}>{selected.titulo}</h3>
-                  )}
+                  <span className={styles.modalTag}>Menú</span>
+                  <h3 className={styles.modalTitle}>{selected.titulo}</h3>
                   <p className={styles.modalDesc}>
                     {selected.descripcion}
                   </p>
