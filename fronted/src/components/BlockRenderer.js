@@ -23,7 +23,11 @@ export default function BlockRenderer({ bloques }) {
           return null;
         }
 
-        return <Component key={`${block.__component}-${block.id ?? index}`} block={block} />;
+        return (
+          <section key={`${block.__component}-${block.id ?? index}`} id={block.ancla?.trim() || undefined}>
+            <Component block={block} />
+          </section>
+        );
       })}
     </>
   );

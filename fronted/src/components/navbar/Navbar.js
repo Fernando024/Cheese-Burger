@@ -1,5 +1,6 @@
 import Link from "next/link";
 import StrapiImage from "@/components/media/StrapiImage";
+import HashLink from "./HashLink";
 import styles from "./Navbar.module.css";
 
 const SOCIAL_ICONS = {
@@ -88,6 +89,14 @@ function renderLink(item) {
   const isExternal = item?.abrirNuevaPestana === true;
 
   if (!text) return null;
+
+  if (href.startsWith("#")) {
+    return (
+      <HashLink key={`${href}-${text}`} href={href} className={styles.link}>
+        {text}
+      </HashLink>
+    );
+  }
 
   if (isExternal) {
     return (

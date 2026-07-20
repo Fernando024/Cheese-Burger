@@ -41,6 +41,11 @@
       "customField": "plugin::multiselect-checkbox.multiselect-checkbox",
       "options": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
       "required": false
+    },
+    "ancla": {
+      "type": "string",
+      "default": "",
+      "required": false
     }
   }
 }

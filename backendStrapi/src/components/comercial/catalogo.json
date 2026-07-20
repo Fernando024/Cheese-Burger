@@ -21,6 +21,11 @@
       "component": "comercial.item-catalogo",
       "repeatable": true,
       "required": false
+    },
+    "ancla": {
+      "type": "string",
+      "default": "ejemplo",
+      "required": false
     }
   }
 }

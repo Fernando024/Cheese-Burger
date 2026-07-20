@@ -18,6 +18,11 @@
     "anchoCompleto": {
       "type": "boolean",
       "default": false
+    },
+    "ancla": {
+      "type": "string",
+      "default": "",
+      "required": false
     }
   }
 }

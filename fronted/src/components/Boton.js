@@ -18,6 +18,14 @@ export default function Boton({ item, className, outline }) {
     );
   }
 
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className={cls}>
+        <span className={styles.text}>{text}</span>
+      </a>
+    );
+  }
+
   if (isExternal) {
     return (
       <a

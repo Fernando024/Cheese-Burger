@@ -36,6 +36,7 @@ export interface ComercialCatalogo extends Struct.ComponentSchema {
     icon: 'bookOpen';
   };
   attributes: {
+    ancla: Schema.Attribute.String & Schema.Attribute.DefaultTo<'ejemplo'>;
     descripcion: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'Explora nuestra selecci\u00F3n de productos'>;
     items: Schema.Attribute.Component<'comercial.item-catalogo', true>;
@@ -127,6 +128,7 @@ export interface ComercialPromociones extends Struct.ComponentSchema {
     icon: 'gift';
   };
   attributes: {
+    ancla: Schema.Attribute.String & Schema.Attribute.DefaultTo<''>;
     descripcion: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'Aprovecha nuestros descuentos por tiempo limitado'>;
     dias_semana: Schema.Attribute.JSON &
@@ -571,6 +573,7 @@ export interface ServiciosExternosMapa extends Struct.ComponentSchema {
   };
   attributes: {
     anchoCompleto: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    ancla: Schema.Attribute.String & Schema.Attribute.DefaultTo<''>;
     mapUrl: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'https://maps.app.goo.gl/Tc8LMY9imtVUvCPi7'>;

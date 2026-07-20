@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function LinkReutilizable({ item, className, active }) {
+export default function LinkReutilizable({ item, className }) {
   const href = item?.url || "";
   const text = item?.texto ?? "";
   const isExternal = item?.abrirNuevaPestana === true;
@@ -9,6 +9,14 @@ export default function LinkReutilizable({ item, className, active }) {
 
   if (!href) {
     return <span className={className}>{text}</span>;
+  }
+
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className={className}>
+        {text}
+      </a>
+    );
   }
 
   if (isExternal) {
