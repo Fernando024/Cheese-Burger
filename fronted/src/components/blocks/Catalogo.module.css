@@ -245,6 +245,12 @@
 }
 
 @media (max-width: 640px) {
+  .card {
+    width: 100%;
+    flex: none;
+    max-width: 100%;
+  }
+
   .modalBody {
     flex-direction: column;
     min-height: auto;

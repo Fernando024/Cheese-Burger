@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import StrapiImage from "@/components/media/StrapiImage";
 import styles from "./Navbar.module.css";
@@ -57,7 +60,7 @@ function detectSocial(url) {
   return null;
 }
 
-function renderSocial(item) {
+function renderSocial(item, className) {
   if (!item?.url) return null;
   const social = detectSocial(item.url);
   return (
@@ -66,7 +69,7 @@ function renderSocial(item) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={styles.socialIcon}
+      className={className || styles.socialIcon}
       aria-label={social || "Red social"}
     >
       {item.icono ? (
@@ -78,7 +81,7 @@ function renderSocial(item) {
   );
 }
 
-function renderLink(item) {
+function renderLink(item, onClick) {
   if (item.__component === "servicios-externos.redes-sociales") {
     return renderSocial(item);
   }
@@ -90,8 +93,18 @@ function renderLink(item) {
   if (!text) return null;
 
   if (href.startsWith("#")) {
+    const handleClick = (e) => {
+      if (onClick) onClick();
+      const targetId = href.slice(1);
+      const el = document.getElementById(targetId);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+        history.replaceState(null, "", href);
+      }
+    };
     return (
-      <a key={`${href}-${text}`} href={href} className={styles.link}>
+      <a key={`${href}-${text}`} href={href} className={styles.link} onClick={handleClick}>
         {text}
       </a>
     );
@@ -105,6 +118,7 @@ function renderLink(item) {
         target="_blank"
         rel="noopener noreferrer"
         className={styles.link}
+        onClick={onClick}
       >
         {text}
       </a>
@@ -112,13 +126,17 @@ function renderLink(item) {
   }
 
   return (
-    <Link key={`${href}-${text}`} href={href} className={styles.link}>
+    <Link key={`${href}-${text}`} href={href} className={styles.link} onClick={onClick}>
       {text}
     </Link>
   );
 }
 
 export default function Navbar({ data }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   const logo = data?.logo;
   const nombre = data?.nombreNegocio || "";
   const links = Array.isArray(data?.links) ? data.links : [];
@@ -129,6 +147,12 @@ export default function Navbar({ data }) {
   const socialLinks = links.filter(
     (item) => item.__component === "servicios-externos.redes-sociales"
   );
+
+  function handleOverlayClick(e) {
+    if (e.target === e.currentTarget) {
+      closeMenu();
+    }
+  }
 
   return (
     <nav className={styles.nav} aria-label="Principal">
@@ -166,6 +190,41 @@ export default function Navbar({ data }) {
           ))}
         </div>
       )}
+
+      <button
+        className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ""}`}
+        onClick={() => setMenuOpen((v) => !v)}
+        aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={menuOpen}
+      >
+        <span className={styles.hamburgerLine} />
+        <span className={styles.hamburgerLine} />
+        <span className={styles.hamburgerLine} />
+      </button>
+
+      {menuOpen && <div className={styles.overlay} onClick={handleOverlayClick}>
+        <div className={styles.drawer}>
+          {navLinks.length > 0 && (
+            <ul className={styles.drawerList}>
+              {navLinks.map((item, index) => (
+                <li key={item.id ?? `link-${index}`} className={styles.drawerItem}>
+                  {renderLink(item, closeMenu)}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {socialLinks.length > 0 && (
+            <div className={styles.drawerSocial}>
+              {socialLinks.map((item, index) => (
+                <span key={item.id ?? `social-${index}`}>
+                  {renderSocial(item, styles.drawerSocialLink)}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>}
     </nav>
   );
 }
