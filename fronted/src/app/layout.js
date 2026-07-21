@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import WhatsAppFlotante from "@/components/WhatsAppFlotante";
+import StrapiLivePreview from "@/components/StrapiLivePreview";
 import { getFooter, getNavbar, getGlobal } from "@/lib/strapi";
 
 const geistSans = Geist({
@@ -43,6 +44,7 @@ export default async function RootLayout({ children }) {
           </footer>
         </div>
         <WhatsAppFlotante data={globalData?.whatsapp} />
+        <StrapiLivePreview />
       </body>
     </html>
   );

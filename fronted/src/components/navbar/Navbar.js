@@ -1,6 +1,5 @@
 import Link from "next/link";
 import StrapiImage from "@/components/media/StrapiImage";
-import HashLink from "./HashLink";
 import styles from "./Navbar.module.css";
 
 const SOCIAL_ICONS = {
@@ -92,9 +91,9 @@ function renderLink(item) {
 
   if (href.startsWith("#")) {
     return (
-      <HashLink key={`${href}-${text}`} href={href} className={styles.link}>
+      <a key={`${href}-${text}`} href={href} className={styles.link}>
         {text}
-      </HashLink>
+      </a>
     );
   }
 

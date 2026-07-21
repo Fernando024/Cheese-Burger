@@ -1,4 +1,5 @@
 const cfPublicUrl = process.env.CF_PUBLIC_URL || 'https://pub-*.r2.dev';
+const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
 
 const config = [
   'strapi::logger',
@@ -11,7 +12,7 @@ const config = [
         directives: {
           'img-src': ["'self'", 'data:', 'blob:', cfPublicUrl],
           'media-src': ["'self'", 'data:', 'blob:', cfPublicUrl],
-          'frame-src': ["'self'", 'https://www.youtube.com', 'https://www.google.com'],
+          'frame-src': ["'self'", clientUrl, 'https://www.youtube.com', 'https://www.google.com'],
           upgradeInsecureRequests: null,
         },
       },

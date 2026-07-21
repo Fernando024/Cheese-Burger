@@ -38,7 +38,7 @@ function buildQueryString(params) {
   return parts.join("&");
 }
 
-async function strapiFetch(path, { searchParams, tags, revalidate, signal } = {}) {
+async function strapiFetch(path, { searchParams, tags, revalidate, signal, headers: extraHeaders } = {}) {
   if (!STRAPI_URL) {
     throw new StrapiFetchError("NEXT_PUBLIC_STRAPI_URL no está configurada.");
   }
@@ -55,7 +55,7 @@ async function strapiFetch(path, { searchParams, tags, revalidate, signal } = {}
   try {
     const response = await fetch(url, {
       method: "GET",
-      headers: buildHeaders(),
+      headers: { ...buildHeaders(), ...extraHeaders },
       signal: controller.signal,
       next: {
         tags: tags ?? [CACHE_TAG],
@@ -159,6 +159,23 @@ export async function getPageBySlug(slug) {
       "filters[slug][$eq]": slug,
       ...PAGE_POPULATE,
     },
+  });
+  const list = unwrapData(payload);
+  return list[0] ?? null;
+}
+
+export async function getPageBySlugWithDraft(slug, isDraftMode) {
+  if (!slug) return null;
+  const searchParams = {
+    "filters[slug][$eq]": slug,
+    ...PAGE_POPULATE,
+  };
+  if (isDraftMode) {
+    searchParams.status = "draft";
+  }
+  const payload = await strapiFetch("/api/pages", {
+    searchParams,
+    headers: isDraftMode ? { "strapi-encode-source-maps": "true" } : undefined,
   });
   const list = unwrapData(payload);
   return list[0] ?? null;

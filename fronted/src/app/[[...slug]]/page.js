@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
+import { draftMode } from "next/headers";
 import BlockRenderer from "@/components/BlockRenderer";
-import { getAllPageSlugs, getPageBySlug, StrapiFetchError } from "@/lib/strapi";
+import { getAllPageSlugs, getPageBySlug, getPageBySlugWithDraft, StrapiFetchError } from "@/lib/strapi";
 
 const HOME_SLUG = "inicio";
 
@@ -50,9 +51,11 @@ export default async function Page({ params }) {
   const { slug: slugParts } = await params;
   const slug = resolveSlug(slugParts);
 
+  const { isEnabled: isDraftMode } = await draftMode();
+
   let page;
   try {
-    page = await getPageBySlug(slug);
+    page = isDraftMode ? await getPageBySlugWithDraft(slug, true) : await getPageBySlug(slug);
   } catch (error) {
     if (process.env.NODE_ENV !== "production") {
       console.warn(`[Page] Error al obtener "${slug}":`, error?.message ?? error);
