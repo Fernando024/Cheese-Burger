@@ -38,7 +38,7 @@
 
 .parrafo {
   font-size: 1.2rem;
-  color: var(--clr-grey-500);
+  color: var(--clr-black);
   max-width: 50ch;
   line-height: 1.7;
 }
@@ -77,6 +77,29 @@
   .hero {
     padding: 0.5rem 1.25rem 3rem;
   }
+
+  .titulo {
+    font-size: clamp(3rem, 8vw, 4rem);
+  }
+
+  .parrafo {
+    font-size: 1.6rem;
+    color: var(--clr-black);
+  }
+
+  .concepto {
+    font-size: 1.3rem;
+  }
+
+  .mediaCol {
+    max-width: 100%;
+  }
+
+  .media {
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 412px) {
@@ -85,5 +108,15 @@
   }
   .concepto{
     margin-top: 4rem;
+    font-size: 1.2rem;
+  }
+
+  .titulo {
+    font-size: 2.8rem;
+  }
+
+  .parrafo {
+    font-size: 1.4rem;
+    color: var(--clr-black);
   }
 }

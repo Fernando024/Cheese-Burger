@@ -2,6 +2,10 @@
   padding: 4rem 1.25rem;
 }
 
+.section :global(.section-title p) {
+  color: var(--clr-black);
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -238,13 +242,21 @@
 
 .modalDesc {
   font-size: 1.1rem;
-  color: #4b5563;
+  color: var(--clr-black);
   line-height: 1.7;
   white-space: pre-wrap;
   margin: 0;
 }
 
 @media (max-width: 640px) {
+  .section :global(.section-title h2) {
+    font-size: 3rem;
+  }
+
+  .section :global(.section-title p) {
+    font-size: 2rem;
+  }
+
   .card {
     width: 100%;
     flex: none;

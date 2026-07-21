@@ -53,7 +53,7 @@ export default function Promociones({ block }) {
   const data = bloques[0];
   if (!data) return null;
 
-  const { titulo, descripcion, items = [], fecha_fin, dias_semana, boton_enlace } = data;
+  const { titulo, descripcion, items = [], fecha_inicio, fecha_fin, dias_semana, boton_enlace } = data;
 
   if (!Array.isArray(items) || items.length === 0) return null;
 
@@ -85,17 +85,22 @@ export default function Promociones({ block }) {
             {titulo && <h2 className={styles.title}>{titulo}</h2>}
             {descripcion && <p className={styles.subtitle}>{descripcion}</p>}
             <div className={styles.meta}>
+              {fecha_inicio && (
+                <span className={styles.metaDate}>
+                  Desde {new Date(fecha_inicio).toLocaleDateString("es-MX")}
+                </span>
+              )}
               {fecha_fin && (
-                <span className={styles.metaValidity}>
-                  Válido hasta {new Date(fecha_fin).toLocaleDateString("es-MX")}
+                <span className={styles.metaDate}>
+                  Hasta {new Date(fecha_fin).toLocaleDateString("es-MX")}
                 </span>
               )}
               {(() => {
                 const days = parseDays(dias_semana);
                 if (!days) return null;
                 return (
-                  <span className={styles.metaDays}>
-                    Días: {days.join(" · ")}
+                  <span className={styles.metaDate}>
+                    {days.join(" · ")}
                   </span>
                 );
               })()}
@@ -196,12 +201,22 @@ export default function Promociones({ block }) {
                     <p className={styles.modalDesc}>{selected.descripcion}</p>
                   )}
 
+                  {selected.fecha_inicio && (
+                    <p className={styles.modalDate}>
+                      Desde {new Date(selected.fecha_inicio).toLocaleDateString("es-MX")}
+                    </p>
+                  )}
+                  {selected.fecha_fin && (
+                    <p className={styles.modalDate}>
+                      Hasta {new Date(selected.fecha_fin).toLocaleDateString("es-MX")}
+                    </p>
+                  )}
                   {(() => {
                     const days = parseDays(selected.dias_semana);
                     if (!days) return null;
                     return (
-                      <p className={styles.modalDays}>
-                        Días: {days.join(" · ")}
+                      <p className={styles.modalDate}>
+                        {days.join(" · ")}
                       </p>
                     );
                   })()}
